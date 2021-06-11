@@ -30,9 +30,12 @@ Vedeuse
 
 Pour Commencer à utiliser l'applcation
 il faut ajouter en :
+- composer install
+- npm install
 1 - premier les différent Supermarcher
 2 - Creer les différentent utilisateur
 3 - ajout des produits
+
 
 Les fonctionnalité 
 
@@ -45,3 +48,6 @@ Les fonctionnalité
 - Vente effectuer par utilisateur le jour même
 
 Authetification adminstrateur : nomenarisoa MDP : zanahary
+
+Veuillez changer la base de donnée dans .env en supermarcher
+
