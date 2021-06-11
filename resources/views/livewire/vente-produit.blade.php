@@ -1,21 +1,19 @@
 <div>
     <div class="container">
+
         <div class="row" style="margin-bottom: 2%">
             <div class="col-md-4">
                 <h4>{{ $shops->name }} &nbsp {{ $shops->location }}</h4>
             </div>
-            <div class="col-md-4">
-
-            </div>
-
-            <div class="col-md-4">
-
-            </div>
         </div>
         <div class="container">
+
             <div class="row">
+
                 <div class="col-md-6">
-                    @include('../livewire/autocomplet')
+                    <div class="card shadow" style="width: 100%;">
+                        <div class="card-body">
+                            @include('../livewire/autocomplet')
                     <table class="table table-hover" style="margin-top: 2%">
                         <thead>
                           <tr class="text-center">
@@ -47,8 +45,13 @@
                             {{$produits->links()}}
                         </ul>
                     </div>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="col-md-6">
+                    <div class="card shadow" style="width: 100%;">
+                        <div class="card-body">
                     <h5>Mon panier</h5>
                     <table class="table table-hover" style="margin-top: 3%">
                         <thead>
@@ -95,6 +98,8 @@
                         </div>
 
                     </div>
+                </div>
+            </div>
 
                 </div>
             </div>

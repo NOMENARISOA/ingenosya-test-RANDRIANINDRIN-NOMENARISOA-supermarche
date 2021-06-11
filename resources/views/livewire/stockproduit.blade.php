@@ -1,42 +1,52 @@
 <div>
     <div class="container">
-        <div class="row" style="margin-bottom: 2%">
-            <div class="col-md-4">
-                <h4>List des Produits</h4>
-            </div>
-            <div class="col-md-4">
-                @include('../livewire/autocomplet')
-            </div>
+        <div class="card shadow" style="width: 100%;">
+            <div class="card-body">
+                <div class="row" style="margin-bottom: 2%">
+                    <div class="col-md-4">
+                        <h4>List des Produits</h4>
+                    </div>
+                    <div class="col-md-4">
+                        @include('../livewire/autocomplet')
+                    </div>
 
-            <div class="col-md-4">
-                <button class="btn btn-success" style="right: 0 !important; position:absolute"  data-toggle="modal" data-target="#addProduit">Ajouter nouveau Produit</button>
+                    <div class="col-md-4">
+                        <button class="btn btn-success" style="right: 0 !important; position:absolute"  data-toggle="modal" data-target="#addProduit">Ajouter nouveau Produit</button>
+                    </div>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($produits as $produit)
+                            <tr>
+                                <th>PR-{{ $produit->id }}</th>
+                                <td>{{ $produit->name }}</td>
+                                <td>{{ $produit->description }}</td>
+                                <td>{{ $produit->prix }}</td>
+                                <td>
+                                    <button class="btn btn-warning"> Modifier</button>
+                                    <button class="btn btn-danger"> Supprimer</button>
+                                </td>
+                          </tr>
+                        @endforeach
+                    </tbody>
+                  </table>
+                  <div class="page-pagination"  style="border: 0px">
+                    <ul class="pagination justify-content-center" style="border: 0px">
+                        {{$produits->links()}}
+                    </ul>
+                </div>
             </div>
         </div>
-        <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Prix</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-                @foreach ($produits as $produit)
-                    <tr>
-                        <th>PR-{{ $produit->id }}</th>
-                        <td>{{ $produit->name }}</td>
-                        <td>{{ $produit->description }}</td>
-                        <td>{{ $produit->prix }}</td>
-                        <td>
-                            <button class="btn btn-warning"> Modifier</button>
-                            <button class="btn btn-danger"> Supprimer</button>
-                        </td>
-                  </tr>
-                @endforeach
-            </tbody>
-          </table>
+
     </div>
     <div class="modal fade" id="addProduit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

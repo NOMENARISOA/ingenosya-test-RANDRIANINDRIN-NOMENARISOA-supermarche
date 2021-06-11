@@ -43,3 +43,5 @@ Les fonctionnalité
 - list utilisateur : ajout utilisatuer
 - Génération PDF pour les facture une fois les vente effectué.
 - Vente effectuer par utilisateur le jour même
+
+Authetification adminstrateur : nomenarisoa MDP : zanahary

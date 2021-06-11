@@ -42,11 +42,11 @@ class LoginController extends Controller
 
     public function login(Request $request)
 
-    {   
+    {
 
         $input = $request->all();
 
-  
+
 
         $this->validate($request, [
 
@@ -56,16 +56,23 @@ class LoginController extends Controller
 
         ]);
 
-  
+
 
         $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
 
         if(Auth::attempt(array($fieldType => $input['username'], 'password' => $input['password'])))
 
         {
+            if(Auth::user()->role == 1){
+                return redirect()->route('backoffice.index');
+            }
+            if(Auth::user()->role == 2){
+                return redirect()->route('stock.gestion');
+            }
+            if(Auth::user()->role == 3){
+                return redirect()->route('vente.index');
+            }
 
-            // dd(Auth::user());
-            return redirect()->route('home');
 
         }else{
 
@@ -75,7 +82,7 @@ class LoginController extends Controller
 
         }
 
-          
+
 
     }
 }

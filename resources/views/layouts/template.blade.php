@@ -51,6 +51,13 @@
             background-color: #FFF;
             padding: 2%
         }
+        .active{
+            background-color: #0000f0;
+            color:#FFF !important
+        }
+        .shadow{
+            box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.945);
+        }
     </style>
 </head>
 <body>
@@ -88,7 +95,7 @@
         </script>
     @endif
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="background-color:#0000f0 !important;">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow" style="background-color:#0000f0 !important; ">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}" style="color: #FFF; font-weight: bold">
                     Supermarcher
@@ -120,15 +127,15 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" style="color: #FFF" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ strtoupper (Auth::user()->name)  }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                                     document.getElementById('logout-form').submit();" >
+                                       Deconnexion
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -142,16 +149,16 @@
             </div>
         </nav>
         <div class="row">
-            <div class="col-md-2" style="padding-top: 2%;background-color: #0000f0;padding-right: 0px;">
+            <div class="col-md-2" style="padding-top: 2%;padding-right: 0px;height:1000px;box-shadow: 5px 0 5px -5px rgba(0, 0, 0, 0.479);">
 
                 <ul class="side-list" style="">
                     @if(Auth::user()->role == 1)
                         <li class="side-list-item">BACKOFFICE</li>
                         <li  class="side-list-item">
-                            <a  class="btn" href="{{ route('backoffice.index') }}"> <i class="bi-speedometer2"></i> &nbsp; DashBoard</a>
+                            <a   class="btn @if(Request::segment(1)=='backoffice' && Request::segment(2)== 'index') active @endif " href="{{ route('backoffice.index') }}"> <i class="bi-speedometer2"></i> &nbsp; DashBoard</a>
                         </li>
                         <li  class="side-list-item">
-                            <a  class="btn" href="{{ route('vente.user') }}"> <i class="bi-speedometer2"></i> &nbsp; Vente effectuée par utilisateur</a>
+                            <a  class="btn @if(Request::segment(1)=='backoffice' && Request::segment(2)== 'user') active @endif" href="{{ route('vente.user') }}"> <i class="bi-speedometer2"></i> &nbsp; Vente effectuée par utilisateur</a>
                         </li>
                     @endif
 
@@ -164,18 +171,18 @@
                     @if(Auth::user()->role == 1 || Auth::user()->role == 2 )
                         <li class="side-list-item">STOCK</li>
                         <li class="side-list-item">
-                            <a class="btn" href="{{ route('stock.gestion') }}"> <i class="bi-view-list"></i> &nbsp; Gestion Stock</a>
+                            <a class="btn @if(Request::segment(1)=='stock' && Request::segment(2)== 'gestion') active @endif" href="{{ route('stock.gestion') }}"> <i class="bi-view-list"></i> &nbsp; Gestion Stock</a>
                         </li>
                         <li class="side-list-item">
-                            <a class="btn" href="{{ route('stock.produit') }}"> <i class="bi-view-list"></i> &nbsp; Liste Produit </a>
+                            <a class="btn @if(Request::segment(1)=='stock' && Request::segment(2)== 'produit') active @endif" href="{{ route('stock.produit') }}"> <i class="bi-view-list"></i> &nbsp; Liste Produit </a>
                         </li>
                         <li class="side-list-item">PARAMETRE</li>
 
                         <li class="side-list-item">
-                            <a class="btn" href="{{ route('settings.shop.index') }}"> <i class="bi-view-list"></i> &nbsp; Liste Shop </a>
+                            <a class="btn @if(Request::segment(1)=='parametre' && Request::segment(2)== 'shop') active @endif" href="{{ route('settings.shop.index') }}"> <i class="bi-view-list"></i> &nbsp; Liste Shop </a>
                         </li>
                         <li class="side-list-item">
-                            <a class="btn" href="{{ route('settings.user.index') }}"> <i class="bi-view-list"></i> &nbsp; Liste Utilisateur </a>
+                            <a class="btn @if(Request::segment(1)=='parametre' && Request::segment(2)== 'user') active @endif" href="{{ route('settings.user.index') }}"> <i class="bi-view-list"></i> &nbsp; Liste Utilisateur </a>
                         </li>
                     @endif
                 </ul>

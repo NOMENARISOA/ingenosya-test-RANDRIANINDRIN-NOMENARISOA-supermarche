@@ -1,77 +1,83 @@
 <div>
     <div class="container">
-        <div class="row" style="margin-bottom: 2%">
-            <div class="col-md-4">
-                <h4>List des Produits</h4>
-            </div>
-            <div class="col-md-4">
-                @include('../livewire/autocomplet')
-            </div>
+        <div class="card shadow" style="width: 100%;">
+            <div class="card-body">
+                <div class="row" style="margin-bottom: 2%">
+                    <div class="col-md-4">
+                        <h4>List des Produits</h4>
+                    </div>
+                    <div class="col-md-4">
+                        @include('../livewire/autocomplet')
+                    </div>
 
-            <div class="col-md-4">
-                <button class="btn btn-success" style="right: 0 !important; position:absolute"  data-toggle="modal" data-target="#addUser">Nouvelle Utilisateur</button>
+                    <div class="col-md-4">
+                        <button class="btn btn-success" style="right: 0 !important; position:absolute"  data-toggle="modal" data-target="#addUser">Nouvelle Utilisateur</button>
+                    </div>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nom Utilisateur</th>
+                        <th scope="col">Rôle</th>
+                        <th scope="col">Supermarket Administrer</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($users as $user)
+                            <tr>
+                                <th>USER-{{ $user->id }}</th>
+                                <td>{{ $user->name }}</td>
+                                <td>
+                                    @switch($user->role)
+                                        @case("1")
+                                            Administrateur
+                                            @break
+                                        @case("2")
+                                            Superviseur
+                                            @break
+                                        @case("3")
+                                            Vendeur(euse)
+                                            @break
+                                        @default
+
+                                    @endswitch
+                                </td>
+                                <td> @switch($user->role)
+                                    @case("1")
+                                        Tous
+                                        @break
+                                    @case("2")
+                                        <ul>
+                                            @foreach( $user->shop as $shop)
+                                                <li>{{ $shop->shop->name." ".$shop->shop->location }}</li>
+                                            @endforeach
+                                        </ul>
+                                        @break
+                                    @case("3")
+                                        {{ $user->shop->first()->shop->name." ".$user->shop->first()->shop->location }}
+                                        @break
+                                    @default
+
+                                @endswitch</td>
+                                <td>
+                                    <button class="btn btn-warning"> Modifier</button>
+                                    <button class="btn btn-danger"> Supprimer</button>
+                                </td>
+                          </tr>
+                        @endforeach
+                    </tbody>
+                  </table>
+                  <div class="page-pagination"  style="border: 0px">
+                    <ul class="pagination justify-content-center" style="border: 0px">
+                        {{$users->links()}}
+                    </ul>
+                </div>
             </div>
         </div>
-        <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nom Utilisateur</th>
-                <th scope="col">Rôle</th>
-                <th scope="col">Supermarket Administrer</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-                @foreach ($users as $user)
-                    <tr>
-                        <th>USER-{{ $user->id }}</th>
-                        <td>{{ $user->name }}</td>
-                        <td>
-                            @switch($user->role)
-                                @case("1")
-                                    Administrateur
-                                    @break
-                                @case("2")
-                                    Superviseur
-                                    @break
-                                @case("3")
-                                    Vendeur(euse)
-                                    @break
-                                @default
 
-                            @endswitch
-                        </td>
-                        <td> @switch($user->role)
-                            @case("1")
-                                Tous
-                                @break
-                            @case("2")
-                                <ul>
-                                    @foreach( $user->shop as $shop)
-                                        <li>{{ $shop->shop->name." ".$shop->shop->location }}</li>
-                                    @endforeach
-                                </ul>
-                                @break
-                            @case("3")
-                                {{ $user->shop->first()->shop->name." ".$user->shop->first()->shop->location }}
-                                @break
-                            @default
 
-                        @endswitch</td>
-                        <td>
-                            <button class="btn btn-warning"> Modifier</button>
-                            <button class="btn btn-danger"> Supprimer</button>
-                        </td>
-                  </tr>
-                @endforeach
-            </tbody>
-          </table>
-          <div class="page-pagination"  style="border: 0px">
-            <ul class="pagination justify-content-center" style="border: 0px">
-                {{$users->links()}}
-            </ul>
-        </div>
     </div>
     <style>
         input{

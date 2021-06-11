@@ -1,40 +1,50 @@
 <div>
     <div class="container">
-        <div class="row" style="margin-bottom: 2%">
-            <div class="col-md-4">
-                <h4>List des Supermarcher</h4>
-            </div>
-            <div class="col-md-4">
-                @include('../livewire/autocomplet')
-            </div>
+        <div class="card shadow" style="width: 100%;">
+            <div class="card-body">
+                <div class="row" style="margin-bottom: 2%">
+                    <div class="col-md-4">
+                        <h4>List des Supermarcher</h4>
+                    </div>
+                    <div class="col-md-4">
+                        @include('../livewire/autocomplet')
+                    </div>
 
-            <div class="col-md-4">
-                <button class="btn btn-success" style="right: 0 !important; position:absolute"  data-toggle="modal" data-target="#addShop">Nouvelle supermarcher</button>
+                    <div class="col-md-4">
+                        <button class="btn btn-success" style="right: 0 !important; position:absolute"  data-toggle="modal" data-target="#addShop">Nouvelle supermarcher</button>
+                    </div>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nom du supermarcher</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($shops as $shop)
+                            <tr>
+                                <th>PR-{{ $shop->id }}</th>
+                                <td>{{ $shop->name }}</td>
+                                <td>{{ $shop->location }}</td>
+                                <td>
+                                    <button class="btn btn-warning"> Modifier</button>
+                                    <button class="btn btn-danger"> Supprimer</button>
+                                </td>
+                          </tr>
+                        @endforeach
+                    </tbody>
+                  </table>
+                  <div class="page-pagination"  style="border: 0px">
+                    <ul class="pagination justify-content-center" style="border: 0px">
+                        {{$shops->links()}}
+                    </ul>
+                </div>
             </div>
         </div>
-        <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nom du supermarcher</th>
-                <th scope="col">Location</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-                @foreach ($shops as $shop)
-                    <tr>
-                        <th>PR-{{ $shop->id }}</th>
-                        <td>{{ $shop->name }}</td>
-                        <td>{{ $shop->location }}</td>
-                        <td>
-                            <button class="btn btn-warning"> Modifier</button>
-                            <button class="btn btn-danger"> Supprimer</button>
-                        </td>
-                  </tr>
-                @endforeach
-            </tbody>
-          </table>
+
     </div>
     <style>
         input{
