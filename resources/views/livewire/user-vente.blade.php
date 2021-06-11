@@ -7,10 +7,6 @@
             <div class="col-md-4">
                 @include('../livewire/autocomplet')
             </div>
-
-            <div class="col-md-4">
-                <button class="btn btn-success" style="right: 0 !important; position:absolute"  data-toggle="modal" data-target="#addUser">Nouvelle Utilisateur</button>
-            </div>
         </div>
         <table class="table table-hover">
             <thead>
