@@ -42,3 +42,4 @@ Les fonctionnalité
 - list shop : ajout supermarcher
 - list utilisateur : ajout utilisatuer
 - Génération PDF pour les facture une fois les vente effectué.
+- Vente effectuer par utilisateur le jour même
