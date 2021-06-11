@@ -135,7 +135,7 @@ class VenteProduit extends Component
     public function render()
     {
         return view('livewire.vente-produit',[
-            'produits'=> produit::where('name', 'like', '%' . $this->query. '%')->paginate(10),
+            'produits'=> produit::where('name', 'like', '%' . $this->query. '%')->paginate(6),
             'shops'=>shop::findOrfail($this->shop)
         ]);
     }

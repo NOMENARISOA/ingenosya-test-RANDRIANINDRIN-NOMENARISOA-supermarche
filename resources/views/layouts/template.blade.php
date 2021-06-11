@@ -150,6 +150,9 @@
                         <li  class="side-list-item">
                             <a  class="btn" href="{{ route('backoffice.index') }}"> <i class="bi-speedometer2"></i> &nbsp; DashBoard</a>
                         </li>
+                        <li  class="side-list-item">
+                            <a  class="btn" href="{{ route('vente.user') }}"> <i class="bi-speedometer2"></i> &nbsp; Vente effectuée par utilisateur</a>
+                        </li>
                     @endif
 
                     @if(Auth::user()->role == 3)

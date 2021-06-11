@@ -67,6 +67,11 @@
                 @endforeach
             </tbody>
           </table>
+          <div class="page-pagination"  style="border: 0px">
+            <ul class="pagination justify-content-center" style="border: 0px">
+                {{$users->links()}}
+            </ul>
+        </div>
     </div>
     <style>
         input{

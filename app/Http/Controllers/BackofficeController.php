@@ -16,6 +16,11 @@ class BackofficeController extends Controller
         return view('backoffice.index');
     }
 
+
+    public function vendeuser()
+    {
+        return view('backoffice.user');
+    }
     /**
      * Show the form for creating a new resource.
      *

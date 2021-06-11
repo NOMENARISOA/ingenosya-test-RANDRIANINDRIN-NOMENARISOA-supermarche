@@ -23,6 +23,7 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // BACKOFFICE
 Route::get('/backoffice/index',[BackofficeController::class,'index'])->name('backoffice.index')->middleware('auth');
+Route::get('/backoffice/user',[BackofficeController::class,'vendeuser'])->name('vente.user')->middleware('auth');
 // STOCK
 Route::get('/stock/gestion',[StockController::class,'gestion_stock'])->name('stock.gestion')->middleware('auth');
 Route::post('/stock/add',[StockController::class,'stock_add'])->name('stock.add')->middleware('auth');
