@@ -9,9 +9,11 @@ use App\Models\vente;
 use App\Models\vente_produit;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class VenteProduit extends Component
 {
+    use WithPagination;
     use LivewireAutocomplet;
     public $shop ="1";
     public $carts = [];
@@ -95,14 +97,14 @@ class VenteProduit extends Component
             $vente_produit->vente_id = $vente->id;
 
             $vente_produit->save();
+            //Decommenter pour activer le stcok
+            // $shop_produit = shop_produit::where('shop_id','=',$this->shop)->where('produit_id','=', $vente_produit->produit_id)->first();
 
-            $shop_produit = shop_produit::where('shop_id','=',$this->shop)->where('produit_id','=', $vente_produit->produit_id)->first();
+            // $shop_produit->update([
+            //     'stock' => (int)$shop_produit->stock - (int)$item_produit['quantiter']
+            // ]);
 
-            $shop_produit->update([
-                'stock' => (int)$shop_produit->stock - (int)$item_produit['quantiter']
-            ]);
-
-            $shop_produit->save();
+            // $shop_produit->save();
 
 
 
@@ -124,10 +126,16 @@ class VenteProduit extends Component
             ->toArray();
     }
 
+    public function paginationView(){
+
+        return 'livewire.pagination';
+
+    }
+
     public function render()
     {
         return view('livewire.vente-produit',[
-            'produits'=> produit::where('name', 'like', '%' . $this->query. '%')->get(),
+            'produits'=> produit::where('name', 'like', '%' . $this->query. '%')->paginate(10),
             'shops'=>shop::findOrfail($this->shop)
         ]);
     }

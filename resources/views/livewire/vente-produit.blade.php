@@ -20,7 +20,7 @@
                         <thead>
                           <tr class="text-center">
                             <th scope="col">Name</th>
-                            <th scope="col">Stock</th>
+                            {{--  <th scope="col">Stock</th>  --}}
                             <th scope="col">Prix U</th>
                             <th scope="col">Action</th>
                           </tr>
@@ -29,19 +29,24 @@
                             @foreach ($produits as $produit)
                                 <tr class="text-center">
                                     <td>{{ $produit->name }}</td>
-                                    <td>{{ $produit->shop->where('shop_id','=','1')->first()->stock }}</td>
+                                    {{--  <td>{{ $produit->shop->where('shop_id','=','1')->first()->stock }}</td>  --}}
                                     <td>{{ $produit->prix }}</td>
                                     <td>
-                                        @if($produit->shop->where('shop_id','=','1')->first()->stock > 0  )
+                                        {{--  @if($produit->shop->where('shop_id','=','1')->first()->stock > 0  )  --}}
                                         <button class="btn btn-success" wire:click="addtoCart({{ $produit->id }})" > <i class="bi-cart-plus-fill"></i></button>
-                                        @else
-                                            <p class="test-danger"> Stock épuisé</p>
-                                        @endif
+                                        {{--  @else  --}}
+                                            {{--  <p class="test-danger"> Stock épuisé</p>  --}}
+                                        {{--  @endif  --}}
                                     </td>
                               </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="page-pagination"  style="border: 0px">
+                        <ul class="pagination justify-content-center" style="border: 0px">
+                            {{$produits->links()}}
+                        </ul>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <h5>Mon panier</h5>
