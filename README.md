@@ -30,33 +30,37 @@ If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Lar
 ## Laravel Sponsors
 
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+RANDRIANINDRINA NOMENARISOA HAJALALAINA
+FRAMEWORK LARAVEL 8
+C'est une application qui permet de faire une vente au prêt des vendeuse ou vendeurs et qui peuvent supérviser par des administrateur et Supervisuer
+Les différent rôle d'utilisateur : 1 = Administrateur 2 = Superviseur 3 = Vendeur(euse)
+Administrateur= Administeur peuvent :
+- visualiser les graphes
+- Ravitailler les Stock
+- Ajouter des produit
+- Ajouter les utilisateur
+- Ajouter les  suppermarcher
 
-### Premium Partners
+Superviseur
+- Ravitailler les Stock
+- Ajouter des produit
+- Ajouter les utilisateur
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+Vedeuse
+- Faire les facture et achat des client
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Pour Commencer à utiliser l'applcation
+il faut ajouter en :
+1 - premier les différent Supermarcher
+2 - Creer les différentent utilisateur
+3 - ajout des produits
 
-## Code of Conduct
+Les fonctionnalité 
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- Dashboard : Afficher les différentes graphe
+- Gestion stock : Ajout produit + ravitaillement stock
+- List produit : ajout produit
+- list shop : ajout supermarcher
+- list utilisateur : ajout utilisatuer
+- Génération PDF pour les facture une fois les vente effectué.
